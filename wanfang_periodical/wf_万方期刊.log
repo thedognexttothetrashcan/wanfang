@@ -1,0 +1,834 @@
+2018-11-08 23:48:55 [scrapy.utils.log] INFO: Scrapy 1.5.0 started (bot: wanfang_periodical)
+2018-11-08 23:48:55 [scrapy.utils.log] INFO: Versions: lxml 4.2.2.0, libxml2 2.9.5, cssselect 1.0.3, parsel 1.4.0, w3lib 1.19.0, Twisted 18.4.0, Python 3.6.4 (v3.6.4:d48eceb, Dec 19 2017, 06:54:40) [MSC v.1900 64 bit (AMD64)], pyOpenSSL 18.0.0 (OpenSSL 1.1.0h  27 Mar 2018), cryptography 2.2.2, Platform Windows-10-10.0.17134-SP0
+2018-11-08 23:48:55 [scrapy.crawler] INFO: Overridden settings: {'BOT_NAME': 'wanfang_periodical', 'DOWNLOAD_DELAY': 0.05224798021806942, 'LOG_FILE': 'wf_万方期刊.log', 'LOG_LEVEL': 'INFO', 'NEWSPIDER_MODULE': 'wanfang_periodical.spiders', 'SPIDER_MODULES': ['wanfang_periodical.spiders']}
+2018-11-08 23:48:55 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.logstats.LogStats']
+2018-11-08 23:48:55 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'wanfang_periodical.middlewares.RandomUserAgentMiddleware',
+ 'wanfang_periodical.middlewares.WanfangPeriodicalDownloaderMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2018-11-08 23:48:55 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2018-11-08 23:48:55 [scrapy.middleware] INFO: Enabled item pipelines:
+['wanfang_periodical.pipelines.MongoproPipeline']
+2018-11-08 23:48:55 [scrapy.core.engine] INFO: Spider opened
+2018-11-08 23:48:55 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2018-11-08 23:48:55 [wf_period] INFO: Spider opened: wf_period
+2018-11-08 23:51:31 [scrapy.extensions.logstats] INFO: Crawled 1 pages (at 1 pages/min), scraped 0 items (at 0 items/min)
+2018-11-08 23:52:06 [scrapy.core.scraper] ERROR: Error processing {'affectoi': 8.75,
+ 'article_num': 791,
+ 'cite_num': 3754,
+ 'cn': '23-1172/TQ',
+ 'cn_short': 'TQ',
+ 'core_perio': 'CSTPCD',
+ 'crawl_time': '2018-11-08 23:51:32',
+ 'download_num': 44717,
+ 'funded_num': 147,
+ 'hostunit_name': '哈尔滨电碳研究所&中国电工技术学会碳石墨材料专业委员会',
+ 'issn': '1001-8948',
+ 'language': 'chi',
+ 'perio_id': 'ts',
+ 'perio_title': '炭素',
+ 'release_cycle': '季刊',
+ 'trans_title': 'Carbon  탄소'}
+Traceback (most recent call last):
+  File "c:\programs\python\python36\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\codes\cetc\wt_codes\wf_1\wanfang_periodical\wanfang_periodical\pipelines.py", line 113, in process_item
+    self.conn.insert_one(d)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 693, in insert_one
+    session=session),
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 607, in _insert
+    bypass_doc_val, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 595, in _insert_one
+    acknowledged, _insert_command, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1242, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "c:\programs\python\python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1571, in _tmp_session
+    s = self._ensure_session(session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1558, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1511, in __start_session
+    server_session = self._get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1544, in _get_server_session
+    return self._topology.get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 427, in get_server_session
+    None)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 199, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 140.143.248.69:27017: timed out
+2018-11-08 23:52:06 [scrapy.extensions.logstats] INFO: Crawled 7 pages (at 6 pages/min), scraped 0 items (at 0 items/min)
+2018-11-08 23:52:39 [scrapy.core.scraper] ERROR: Error processing {'affectoi': 4.97700023651123,
+ 'article_num': 2896,
+ 'cite_num': 62024,
+ 'cn': '11-2360/TE',
+ 'cn_short': 'TE',
+ 'core_perio': 'EI&CSTPCD&北大核心&SCI',
+ 'crawl_time': '2018-11-08 23:52:06',
+ 'download_num': 164032,
+ 'funded_num': 1656,
+ 'hostunit_name': '中国石油天然气股份有限公司勘探开发研究院&中国石油集团科学技术研究院',
+ 'issn': '1000-0747',
+ 'language': 'chi',
+ 'perio_id': 'syktykf',
+ 'perio_title': '石油勘探与开发',
+ 'release_cycle': '双月刊',
+ 'trans_title': 'Petroleum Exploration and Development  석유감탐여개발'}
+Traceback (most recent call last):
+  File "c:\programs\python\python36\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\codes\cetc\wt_codes\wf_1\wanfang_periodical\wanfang_periodical\pipelines.py", line 113, in process_item
+    self.conn.insert_one(d)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 693, in insert_one
+    session=session),
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 607, in _insert
+    bypass_doc_val, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 595, in _insert_one
+    acknowledged, _insert_command, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1242, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "c:\programs\python\python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1571, in _tmp_session
+    s = self._ensure_session(session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1558, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1511, in __start_session
+    server_session = self._get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1544, in _get_server_session
+    return self._topology.get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 427, in get_server_session
+    None)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 199, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 140.143.248.69:27017: timed out
+2018-11-08 23:53:15 [scrapy.core.scraper] ERROR: Error processing {'affectoi': 6.34600019454956,
+ 'article_num': 3253,
+ 'cite_num': 206381,
+ 'cn': '11-1078/F',
+ 'cn_short': 'F',
+ 'core_perio': 'CSTPCD&CSSCI&北大核心',
+ 'crawl_time': '2018-11-08 23:52:39',
+ 'download_num': 899250,
+ 'funded_num': 1424,
+ 'hostunit_name': '中国会计学会',
+ 'issn': '1003-2886',
+ 'language': 'chi',
+ 'perio_id': 'kjyj',
+ 'perio_title': '会计研究',
+ 'release_cycle': '月刊',
+ 'trans_title': 'Accounting Research  회계구'}
+Traceback (most recent call last):
+  File "c:\programs\python\python36\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\codes\cetc\wt_codes\wf_1\wanfang_periodical\wanfang_periodical\pipelines.py", line 113, in process_item
+    self.conn.insert_one(d)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 693, in insert_one
+    session=session),
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 607, in _insert
+    bypass_doc_val, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 595, in _insert_one
+    acknowledged, _insert_command, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1242, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "c:\programs\python\python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1571, in _tmp_session
+    s = self._ensure_session(session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1558, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1511, in __start_session
+    server_session = self._get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1544, in _get_server_session
+    return self._topology.get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 427, in get_server_session
+    None)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 199, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 140.143.248.69:27017: timed out
+2018-11-08 23:53:49 [scrapy.core.scraper] ERROR: Error processing {'affectoi': 11.0299997329712,
+ 'article_num': 1718,
+ 'cite_num': 22424,
+ 'cn': '33-1304/G4',
+ 'cn_short': 'G4',
+ 'core_perio': 'CSSCI',
+ 'crawl_time': '2018-11-08 23:53:15',
+ 'download_num': 108756,
+ 'funded_num': 769,
+ 'hostunit_name': '浙江广播电视大学',
+ 'issn': '1672-0008',
+ 'language': 'chi',
+ 'perio_id': 'ycyyzz',
+ 'perio_title': '远程教育杂志',
+ 'release_cycle': '双月刊',
+ 'trans_title': 'Journal of Distance Education  원정육잡지'}
+Traceback (most recent call last):
+  File "c:\programs\python\python36\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\codes\cetc\wt_codes\wf_1\wanfang_periodical\wanfang_periodical\pipelines.py", line 113, in process_item
+    self.conn.insert_one(d)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 693, in insert_one
+    session=session),
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 607, in _insert
+    bypass_doc_val, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 595, in _insert_one
+    acknowledged, _insert_command, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1242, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "c:\programs\python\python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1571, in _tmp_session
+    s = self._ensure_session(session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1558, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1511, in __start_session
+    server_session = self._get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1544, in _get_server_session
+    return self._topology.get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 427, in get_server_session
+    None)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 199, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 140.143.248.69:27017: timed out
+2018-11-08 23:54:23 [scrapy.core.scraper] ERROR: Error processing {'affectoi': 4.97700023651123,
+ 'article_num': 2896,
+ 'cite_num': 62024,
+ 'cn': '11-2360/TE',
+ 'cn_short': 'TE',
+ 'core_perio': 'EI&CSTPCD&北大核心&SCI',
+ 'crawl_time': '2018-11-08 23:53:49',
+ 'download_num': 164032,
+ 'funded_num': 1656,
+ 'hostunit_name': '中国石油天然气股份有限公司勘探开发研究院&中国石油集团科学技术研究院',
+ 'issn': '1000-0747',
+ 'language': 'chi',
+ 'perio_id': 'syktykf',
+ 'perio_title': '石油勘探与开发',
+ 'release_cycle': '双月刊',
+ 'trans_title': 'Petroleum Exploration and Development  석유감탐여개발'}
+Traceback (most recent call last):
+  File "c:\programs\python\python36\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\codes\cetc\wt_codes\wf_1\wanfang_periodical\wanfang_periodical\pipelines.py", line 113, in process_item
+    self.conn.insert_one(d)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 693, in insert_one
+    session=session),
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 607, in _insert
+    bypass_doc_val, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 595, in _insert_one
+    acknowledged, _insert_command, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1242, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "c:\programs\python\python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1571, in _tmp_session
+    s = self._ensure_session(session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1558, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1511, in __start_session
+    server_session = self._get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1544, in _get_server_session
+    return self._topology.get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 427, in get_server_session
+    None)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 199, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 140.143.248.69:27017: timed out
+2018-11-08 23:54:58 [scrapy.core.scraper] ERROR: Error processing {'affectoi': 4.28700017929077,
+ 'article_num': 1337,
+ 'cite_num': 29710,
+ 'cn': '11-1489/C',
+ 'cn_short': 'C',
+ 'core_perio': 'CSTPCD&CSSCI&北大核心',
+ 'crawl_time': '2018-11-08 23:54:23',
+ 'download_num': 82832,
+ 'funded_num': 389,
+ 'hostunit_name': '中国人民大学',
+ 'issn': '1000-6087',
+ 'language': 'chi',
+ 'perio_id': 'rkyj',
+ 'perio_title': '人口研究',
+ 'release_cycle': '双月刊',
+ 'trans_title': 'Population Research  인구구'}
+Traceback (most recent call last):
+  File "c:\programs\python\python36\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\codes\cetc\wt_codes\wf_1\wanfang_periodical\wanfang_periodical\pipelines.py", line 113, in process_item
+    self.conn.insert_one(d)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 693, in insert_one
+    session=session),
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 607, in _insert
+    bypass_doc_val, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 595, in _insert_one
+    acknowledged, _insert_command, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1242, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "c:\programs\python\python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1571, in _tmp_session
+    s = self._ensure_session(session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1558, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1511, in __start_session
+    server_session = self._get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1544, in _get_server_session
+    return self._topology.get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 427, in get_server_session
+    None)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 199, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 140.143.248.69:27017: timed out
+2018-11-08 23:55:31 [scrapy.core.scraper] ERROR: Error processing {'affectoi': 3.82200002670288,
+ 'article_num': 2579,
+ 'cite_num': 57748,
+ 'cn': '31-1938/TU',
+ 'cn_short': 'TU',
+ 'core_perio': 'CSTPCD&CSSCI&北大核心',
+ 'crawl_time': '2018-11-08 23:54:58',
+ 'download_num': 648346,
+ 'funded_num': 755,
+ 'hostunit_name': '同济大学',
+ 'issn': '1000-3363',
+ 'language': 'chi',
+ 'perio_id': 'csghhk',
+ 'perio_title': '城市规划学刊',
+ 'release_cycle': '双月刊',
+ 'trans_title': 'Urban Planning Forum  성시규획학간'}
+Traceback (most recent call last):
+  File "c:\programs\python\python36\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\codes\cetc\wt_codes\wf_1\wanfang_periodical\wanfang_periodical\pipelines.py", line 113, in process_item
+    self.conn.insert_one(d)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 693, in insert_one
+    session=session),
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 607, in _insert
+    bypass_doc_val, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 595, in _insert_one
+    acknowledged, _insert_command, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1242, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "c:\programs\python\python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1571, in _tmp_session
+    s = self._ensure_session(session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1558, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1511, in __start_session
+    server_session = self._get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1544, in _get_server_session
+    return self._topology.get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 427, in get_server_session
+    None)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 199, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 140.143.248.69:27017: timed out
+2018-11-08 23:55:31 [scrapy.extensions.logstats] INFO: Crawled 7 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2018-11-08 23:56:05 [scrapy.core.scraper] ERROR: Error processing {'affectoi': 4.64300012588501,
+ 'article_num': 1786,
+ 'cite_num': 23289,
+ 'cn': '32-1317/F',
+ 'cn_short': 'F',
+ 'core_perio': 'CSSCI&北大核心',
+ 'crawl_time': '2018-11-08 23:55:31',
+ 'download_num': 138273,
+ 'funded_num': 655,
+ 'hostunit_name': '南京审计学院',
+ 'issn': '1004-4833',
+ 'language': 'chi',
+ 'perio_id': 'sjyjjyj',
+ 'perio_title': '审计与经济研究',
+ 'release_cycle': '双月刊',
+ 'trans_title': 'Audit & Economy Research  심계여경제구'}
+Traceback (most recent call last):
+  File "c:\programs\python\python36\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\codes\cetc\wt_codes\wf_1\wanfang_periodical\wanfang_periodical\pipelines.py", line 113, in process_item
+    self.conn.insert_one(d)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 693, in insert_one
+    session=session),
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 607, in _insert
+    bypass_doc_val, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 595, in _insert_one
+    acknowledged, _insert_command, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1242, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "c:\programs\python\python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1571, in _tmp_session
+    s = self._ensure_session(session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1558, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1511, in __start_session
+    server_session = self._get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1544, in _get_server_session
+    return self._topology.get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 427, in get_server_session
+    None)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 199, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 140.143.248.69:27017: timed out
+2018-11-08 23:56:40 [scrapy.core.scraper] ERROR: Error processing {'affectoi': 9.8439998626709,
+ 'article_num': 2033,
+ 'cite_num': 26583,
+ 'cn': '31-1724/G4',
+ 'cn_short': 'G4',
+ 'core_perio': 'CSTPCD&CSSCI&北大核心',
+ 'crawl_time': '2018-11-08 23:56:05',
+ 'download_num': 160775,
+ 'funded_num': 627,
+ 'hostunit_name': '上海远程教育集团&上海开放大学',
+ 'issn': '1007-2179',
+ 'language': 'chi',
+ 'perio_id': 'kfjyyj',
+ 'perio_title': '开放教育研究',
+ 'release_cycle': '双月刊',
+ 'trans_title': 'Education Research  개방육구'}
+Traceback (most recent call last):
+  File "c:\programs\python\python36\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\codes\cetc\wt_codes\wf_1\wanfang_periodical\wanfang_periodical\pipelines.py", line 113, in process_item
+    self.conn.insert_one(d)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 693, in insert_one
+    session=session),
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 607, in _insert
+    bypass_doc_val, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 595, in _insert_one
+    acknowledged, _insert_command, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1242, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "c:\programs\python\python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1571, in _tmp_session
+    s = self._ensure_session(session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1558, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1511, in __start_session
+    server_session = self._get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1544, in _get_server_session
+    return self._topology.get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 427, in get_server_session
+    None)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 199, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 140.143.248.69:27017: timed out
+2018-11-08 23:57:15 [scrapy.core.scraper] ERROR: Error processing {'affectoi': 3.70300006866455,
+ 'article_num': 4070,
+ 'cite_num': 66114,
+ 'cn': '11-2074/P',
+ 'cn_short': 'P',
+ 'core_perio': 'EI&CSTPCD&北大核心&SCI',
+ 'crawl_time': '2018-11-08 23:56:40',
+ 'download_num': 243716,
+ 'funded_num': 3758,
+ 'hostunit_name': '中国地球物理学会&中国科学院地质与地球物理研究所',
+ 'issn': '0001-5733',
+ 'language': 'chi',
+ 'perio_id': 'dqwlxb',
+ 'perio_title': '地球物理学报',
+ 'release_cycle': '月刊',
+ 'trans_title': 'Chinese Journal of Geophysics  지구물리학보'}
+Traceback (most recent call last):
+  File "c:\programs\python\python36\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\codes\cetc\wt_codes\wf_1\wanfang_periodical\wanfang_periodical\pipelines.py", line 113, in process_item
+    self.conn.insert_one(d)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 693, in insert_one
+    session=session),
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 607, in _insert
+    bypass_doc_val, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 595, in _insert_one
+    acknowledged, _insert_command, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1242, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "c:\programs\python\python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1571, in _tmp_session
+    s = self._ensure_session(session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1558, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1511, in __start_session
+    server_session = self._get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1544, in _get_server_session
+    return self._topology.get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 427, in get_server_session
+    None)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 199, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 140.143.248.69:27017: timed out
+2018-11-08 23:57:49 [scrapy.core.scraper] ERROR: Error processing {'affectoi': 3.12599992752075,
+ 'article_num': 4337,
+ 'cite_num': 80840,
+ 'cn': '37-1196/N',
+ 'cn_short': 'N',
+ 'core_perio': 'CSTPCD&CSSCI&北大核心',
+ 'crawl_time': '2018-11-08 23:57:15',
+ 'download_num': 592618,
+ 'funded_num': 3162,
+ 'hostunit_name': '中国可持续发展研究会&山东省可持续发展中心&中国21世纪议程管理中心&山东师范大学',
+ 'issn': '1002-2104',
+ 'language': 'chi',
+ 'perio_id': 'zgrkzyyhj',
+ 'perio_title': '中国人口·资源与环境',
+ 'release_cycle': '月刊',
+ 'trans_title': 'China Population Resources and Environment  중국인구·자원여환경'}
+Traceback (most recent call last):
+  File "c:\programs\python\python36\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\codes\cetc\wt_codes\wf_1\wanfang_periodical\wanfang_periodical\pipelines.py", line 113, in process_item
+    self.conn.insert_one(d)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 693, in insert_one
+    session=session),
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 607, in _insert
+    bypass_doc_val, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 595, in _insert_one
+    acknowledged, _insert_command, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1242, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "c:\programs\python\python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1571, in _tmp_session
+    s = self._ensure_session(session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1558, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1511, in __start_session
+    server_session = self._get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1544, in _get_server_session
+    return self._topology.get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 427, in get_server_session
+    None)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 199, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 140.143.248.69:27017: timed out
+2018-11-08 23:58:24 [scrapy.core.scraper] ERROR: Error processing {'affectoi': 6.24100017547607,
+ 'article_num': 970,
+ 'cite_num': 45836,
+ 'cn': '11-1030/D',
+ 'cn_short': 'D',
+ 'core_perio': 'CSTPCD&CSSCI&北大核心',
+ 'crawl_time': '2018-11-08 23:57:49',
+ 'download_num': 160688,
+ 'funded_num': 106,
+ 'hostunit_name': '中国法学会',
+ 'issn': '1003-1707',
+ 'language': 'chi',
+ 'perio_id': 'zgfx',
+ 'perio_title': '中国法学',
+ 'release_cycle': '双月刊',
+ 'trans_title': 'China Legal Science  중국법학'}
+Traceback (most recent call last):
+  File "c:\programs\python\python36\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\codes\cetc\wt_codes\wf_1\wanfang_periodical\wanfang_periodical\pipelines.py", line 113, in process_item
+    self.conn.insert_one(d)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 693, in insert_one
+    session=session),
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 607, in _insert
+    bypass_doc_val, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 595, in _insert_one
+    acknowledged, _insert_command, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1242, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "c:\programs\python\python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1571, in _tmp_session
+    s = self._ensure_session(session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1558, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1511, in __start_session
+    server_session = self._get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1544, in _get_server_session
+    return self._topology.get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 427, in get_server_session
+    None)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 199, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 140.143.248.69:27017: timed out
+2018-11-08 23:58:24 [scrapy.extensions.logstats] INFO: Crawled 7 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2018-11-08 23:58:58 [scrapy.core.scraper] ERROR: Error processing {'affectoi': 3.8289999961853,
+ 'article_num': 169,
+ 'cite_num': 3241,
+ 'cn': '11-6010/F',
+ 'cn_short': 'F',
+ 'core_perio': 'CSTPCD&CSSCI&北大核心',
+ 'crawl_time': '2018-11-08 23:58:24',
+ 'download_num': 11127,
+ 'funded_num': 111,
+ 'hostunit_name': '北京大学出版社',
+ 'issn': '2095-1086',
+ 'language': 'chi',
+ 'perio_id': 'jjx',
+ 'perio_title': '经济学（季刊）',
+ 'release_cycle': '季刊',
+ 'trans_title': 'China Economic Quarterly'}
+Traceback (most recent call last):
+  File "c:\programs\python\python36\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\codes\cetc\wt_codes\wf_1\wanfang_periodical\wanfang_periodical\pipelines.py", line 113, in process_item
+    self.conn.insert_one(d)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 693, in insert_one
+    session=session),
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 607, in _insert
+    bypass_doc_val, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 595, in _insert_one
+    acknowledged, _insert_command, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1242, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "c:\programs\python\python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1571, in _tmp_session
+    s = self._ensure_session(session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1558, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1511, in __start_session
+    server_session = self._get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1544, in _get_server_session
+    return self._topology.get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 427, in get_server_session
+    None)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 199, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 140.143.248.69:27017: timed out
+2018-11-08 23:59:32 [scrapy.core.scraper] ERROR: Error processing {'affectoi': 5.45900011062622,
+ 'article_num': 1684,
+ 'cite_num': 11599,
+ 'cn': '51-1580/G4',
+ 'cn_short': 'G4',
+ 'core_perio': 'CSSCI',
+ 'crawl_time': '2018-11-08 23:58:58',
+ 'download_num': 64806,
+ 'funded_num': 583,
+ 'hostunit_name': '四川广播电视大学',
+ 'issn': '1009-5195',
+ 'language': 'chi',
+ 'perio_id': 'xdycjyyj',
+ 'perio_title': '现代远程教育研究',
+ 'release_cycle': '双月刊',
+ 'trans_title': 'Modern Distance Education Research  현대원정육구'}
+Traceback (most recent call last):
+  File "c:\programs\python\python36\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\codes\cetc\wt_codes\wf_1\wanfang_periodical\wanfang_periodical\pipelines.py", line 113, in process_item
+    self.conn.insert_one(d)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 693, in insert_one
+    session=session),
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 607, in _insert
+    bypass_doc_val, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 595, in _insert_one
+    acknowledged, _insert_command, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1242, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "c:\programs\python\python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1571, in _tmp_session
+    s = self._ensure_session(session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1558, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1511, in __start_session
+    server_session = self._get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1544, in _get_server_session
+    return self._topology.get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 427, in get_server_session
+    None)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 199, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 140.143.248.69:27017: timed out
+2018-11-09 00:00:07 [scrapy.core.scraper] ERROR: Error processing {'affectoi': 3.43799996376038,
+ 'article_num': 3326,
+ 'cite_num': 64122,
+ 'cn': '11-2128/TE',
+ 'cn_short': 'TE',
+ 'core_perio': 'EI&CSTPCD&北大核心',
+ 'crawl_time': '2018-11-08 23:59:32',
+ 'download_num': 206699,
+ 'funded_num': 2728,
+ 'hostunit_name': '中国石油学会',
+ 'issn': '0253-2697',
+ 'language': 'chi',
+ 'perio_id': 'syxb',
+ 'perio_title': '石油学报',
+ 'release_cycle': '月刊',
+ 'trans_title': 'Acta Petrolei Sinica  석유학보'}
+Traceback (most recent call last):
+  File "c:\programs\python\python36\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\codes\cetc\wt_codes\wf_1\wanfang_periodical\wanfang_periodical\pipelines.py", line 113, in process_item
+    self.conn.insert_one(d)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 693, in insert_one
+    session=session),
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 607, in _insert
+    bypass_doc_val, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 595, in _insert_one
+    acknowledged, _insert_command, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1242, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "c:\programs\python\python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1571, in _tmp_session
+    s = self._ensure_session(session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1558, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1511, in __start_session
+    server_session = self._get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1544, in _get_server_session
+    return self._topology.get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 427, in get_server_session
+    None)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 199, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 140.143.248.69:27017: timed out
+2018-11-09 00:00:44 [scrapy.core.scraper] ERROR: Error processing {'affectoi': 2.81200003623962,
+ 'article_num': 1636,
+ 'cite_num': 6840,
+ 'cn': '65-1039/G4',
+ 'cn_short': 'G4',
+ 'core_perio': 'CSTPCD&CSSCI&北大核心',
+ 'crawl_time': '2018-11-09 00:00:07',
+ 'download_num': 50111,
+ 'funded_num': 264,
+ 'hostunit_name': '新疆师范大学',
+ 'issn': '1005-9245',
+ 'language': 'chi',
+ 'perio_id': 'xjsfdxxb-zxshkxb',
+ 'perio_title': '新疆师范大学学报（哲学社会科学版）',
+ 'release_cycle': '双月刊',
+ 'trans_title': 'Journal of Xinjiang Normal University (Edition of Philosophy '
+                'and Social Sciences)  신강사범대학학보（철학사회과학판）'}
+Traceback (most recent call last):
+  File "c:\programs\python\python36\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\codes\cetc\wt_codes\wf_1\wanfang_periodical\wanfang_periodical\pipelines.py", line 113, in process_item
+    self.conn.insert_one(d)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 693, in insert_one
+    session=session),
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 607, in _insert
+    bypass_doc_val, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 595, in _insert_one
+    acknowledged, _insert_command, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1242, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "c:\programs\python\python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1571, in _tmp_session
+    s = self._ensure_session(session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1558, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1511, in __start_session
+    server_session = self._get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1544, in _get_server_session
+    return self._topology.get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 427, in get_server_session
+    None)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 199, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 140.143.248.69:27017: timed out
+2018-11-09 00:00:50 [scrapy.crawler] INFO: Received SIGINT, shutting down gracefully. Send again to force 
+2018-11-09 00:00:51 [scrapy.crawler] INFO: Received SIGINT twice, forcing unclean shutdown
+2018-11-09 00:01:20 [scrapy.core.scraper] ERROR: Error processing {'affectoi': 3.90300011634827,
+ 'article_num': 549,
+ 'cite_num': 3257,
+ 'cn': '11-2447/D',
+ 'cn_short': 'D',
+ 'core_perio': 'CSTPCD&CSSCI&北大核心',
+ 'crawl_time': '2018-11-09 00:00:44',
+ 'download_num': 6,
+ 'funded_num': 223,
+ 'hostunit_name': '北京大学',
+ 'issn': '1002-4875',
+ 'language': 'chi',
+ 'perio_id': 'zwfx',
+ 'perio_title': '中外法学',
+ 'release_cycle': '双月刊',
+ 'trans_title': 'Peking University Law Journal'}
+Traceback (most recent call last):
+  File "c:\programs\python\python36\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\codes\cetc\wt_codes\wf_1\wanfang_periodical\wanfang_periodical\pipelines.py", line 113, in process_item
+    self.conn.insert_one(d)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 693, in insert_one
+    session=session),
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 607, in _insert
+    bypass_doc_val, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 595, in _insert_one
+    acknowledged, _insert_command, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1242, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "c:\programs\python\python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1571, in _tmp_session
+    s = self._ensure_session(session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1558, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1511, in __start_session
+    server_session = self._get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1544, in _get_server_session
+    return self._topology.get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 427, in get_server_session
+    None)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 199, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 140.143.248.69:27017: timed out
+2018-11-09 00:01:20 [scrapy.core.engine] INFO: Closing spider (shutdown)
+2018-11-09 00:01:20 [scrapy.extensions.logstats] INFO: Crawled 7 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2018-11-09 00:01:55 [scrapy.core.scraper] ERROR: Error processing {'affectoi': 3.84699988365173,
+ 'article_num': 810,
+ 'cite_num': 7465,
+ 'cn': '11-5594/D',
+ 'cn_short': 'D',
+ 'core_perio': 'CSSCI&北大核心',
+ 'crawl_time': '2018-11-09 00:01:20',
+ 'download_num': 54152,
+ 'funded_num': 258,
+ 'hostunit_name': '清华大学',
+ 'issn': '1673-9280',
+ 'language': 'chi',
+ 'perio_id': 'qhfx',
+ 'perio_title': '清华法学',
+ 'release_cycle': '双月刊',
+ 'trans_title': 'Tsinghua Law Review  화법학'}
+Traceback (most recent call last):
+  File "c:\programs\python\python36\lib\site-packages\twisted\internet\defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "E:\codes\cetc\wt_codes\wf_1\wanfang_periodical\wanfang_periodical\pipelines.py", line 113, in process_item
+    self.conn.insert_one(d)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 693, in insert_one
+    session=session),
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 607, in _insert
+    bypass_doc_val, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\collection.py", line 595, in _insert_one
+    acknowledged, _insert_command, session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1242, in _retryable_write
+    with self._tmp_session(session) as s:
+  File "c:\programs\python\python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1571, in _tmp_session
+    s = self._ensure_session(session)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1558, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1511, in __start_session
+    server_session = self._get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\mongo_client.py", line 1544, in _get_server_session
+    return self._topology.get_server_session()
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 427, in get_server_session
+    None)
+  File "c:\programs\python\python36\lib\site-packages\pymongo\topology.py", line 199, in _select_servers_loop
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: 140.143.248.69:27017: timed out
+2018-11-09 00:01:55 [scrapy.core.downloader.handlers.http11] WARNING: Got data loss in http://www.wanfangdata.com.cn/perio/page.do. If you want to process broken responses set the setting DOWNLOAD_FAIL_ON_DATALOSS = False -- This message won't be shown in further requests

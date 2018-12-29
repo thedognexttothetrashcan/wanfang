@@ -132,5 +132,5 @@ class RandomUserAgentMiddleware(object):
     
     def process_request(self,request,spider):
         UA = request.headers['User-Agent'] = random.choice(self.user_agents)
-        spider.logger.info('\n\n使用的UA是：%s\n' % UA)
+        # spider.logger.info('\n\n使用的UA是：%s\n' % UA)
         

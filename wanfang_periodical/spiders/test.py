@@ -14,3 +14,18 @@
 # for row in res:
 # 	print(row)
 # print('一共%d行数据' % len(res))
+# s = [
+#     "CSTPCD",
+#     "CSSCI",
+#     "北大核心"
+# ]
+# a = isinstance(s,list)
+# print(a)
+# b = '&'.join(s)
+# print(b)
+# import random
+# print(random.random()*0.7)
+# 
+# 
+# s = '123%d' % 123
+# print(type(s))

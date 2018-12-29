@@ -33,7 +33,7 @@ class WfPeriodSpider(scrapy.Spider):
     def parse(self, response):
         obj = json.loads(response.text)
         url_page = 'http://www.wanfangdata.com.cn/perio/page.do'
-        page_size = 3
+        page_size = 50
         for category in obj[:-1]:
             page_count = category['count']//page_size + 1
             for i in range(page_count):
@@ -49,7 +49,7 @@ class WfPeriodSpider(scrapy.Spider):
                 # print(i)
                 # print('#'*90)
                 yield scrapy.FormRequest(url=url_page, method='POST', headers=self.headers, formdata=post_form,callback=self.parse_page,meta={'page_num':i,'page_size':page_size})
-                break
+                # break
 
     def parse_page(self, response):
         page_num = response.meta['page_num']
@@ -62,12 +62,21 @@ class WfPeriodSpider(scrapy.Spider):
         for pageRow in obj['pageRow']:
             item = WanfangPeriodicalItem()
             item['perio_id'] = pageRow['perio_id']  # 期刊id参数
-            item['perio_title'] = pageRow['perio_id']  # 期刊名称
-            item['hostunit_name'] = pageRow['hostunit_name']  # 主办单位 列表，以&隔开
+            item['perio_title'] = pageRow['perio_title']  # 期刊名称
+            if pageRow['hostunit_name']:
+                if isinstance(pageRow['hostunit_name'],list):
+                    hostunit_name = '&'.join(pageRow['hostunit_name'])
+                    item['hostunit_name'] = hostunit_name
+                else:
+                    item['hostunit_name'] = pageRow['hostunit_name']
+            else:
+                item['hostunit_name'] = None
+
             item['language'] = pageRow['language']  # 语种
             item['issn'] = pageRow['issn']  # 国际刊号
             item['cn'] = pageRow['cn']  # 国内刊号
-            item['cn_short'] = pageRow['cn_short']  # 国内刊号/后面的字符
+            cn_short = pageRow['cn'].rsplit('/')[-1]
+            item['cn_short'] = cn_short  # 国内刊号/后面的字符
             item['release_cycle'] = pageRow['release_cycle']  # 出版周期
             item['affectoi'] = pageRow['affectoi']  # 影响因子
             item['article_num'] = pageRow['article_num']  # 载文量
@@ -76,7 +85,16 @@ class WfPeriodSpider(scrapy.Spider):
 
             item['cite_num'] = pageRow['cite_num']  # 被引量
             item['download_num'] = pageRow['download_num']  # 下载量
-            item['core_perio'] = pageRow['core_perio']  # 期刊 标签 列表，以&隔开
+
+            # 期刊 标签 列表，以&隔开,可能为空
+            if pageRow['core_perio']:
+                if isinstance(pageRow['core_perio'],list):
+                    core_perio = '&'.join(pageRow['core_perio'])
+                    item['core_perio'] = core_perio
+                else:
+                    item['core_perio'] = pageRow['core_perio']
+            else:
+                item['core_perio'] = None
             item['trans_title'] = pageRow['trans_title']  # 期刊外文名称
             now_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # 当前时刻
             item['crawl_time'] = now_time  # 采集时间
@@ -87,6 +105,12 @@ class WfPeriodSpider(scrapy.Spider):
             funds_num = funds[0]
             a = re.sub(r'\D','',funds_num)
             item['funded_num'] = int(a)
+
+            print('#'*80)
+            print(item)
+            print('#'*80)
+
+            yield item
 
 
 

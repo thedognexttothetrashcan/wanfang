@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import random
 
 BOT_NAME = 'wanfang_periodical'
 
@@ -18,7 +19,7 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 0.5
+DOWNLOAD_DELAY = random.random()*0.7
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
@@ -56,9 +57,10 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'wanfang_periodical.pipelines.WanfangPeriodicalPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   # 'wanfang_periodical.pipelines.WanfangPeriodicalPipeline': 300,
+   'wanfang_periodical.pipelines.MongoproPipeline': 200,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
@@ -82,9 +84,12 @@ DOWNLOADER_MIDDLEWARES = {
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 DB_HOST = "127.0.0.1"
-DB_PORT = 3306
+DB_PORT = 3307
 DB_USER = "root"
 DB_PWD = "root"
 DB_NAME = "spiderkeeper"
 DB_TABLE = 'periodical_list_new'
 DB_CHARSET = "utf8"
+
+LOG_LEVEL = 'INFO'
+LOG_FILE = 'wf_万方期刊.log'
